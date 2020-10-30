@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="fr">
+   <head>
+   </head>
+ 
+   <body>
+	<div id="compteur"></div>
+
+	<script type="text/javascript">
+    //////////////////////Start CUSTOMIZATION//////////////////////
+    ////Le budget affiché:
+    //var Gadget_WarCost_WhichWar="US in Afghanistan since 2001";
+    //var Gadget_WarCost_WhichWar="US in Iraq since 2003";
+    //var Gadget_WarCost_WhichWar="US in Wars since 2001";             
+    var Gadget_WarCost_WhichWar="French military budget since 2009";
+     
+    ////Datas: 
+    var totalIraq = 687000000000; // total dollars allocated to Iraq War.
+    var startOfIraqWar = new Date("Mar 20, 2003"); // start of Iraq War.
+    var IraqBudgetedThrough = new Date("Sept 30, 2009"); // current budget goes to 
+     
+    var totalAg  = 228000000000; // total dollars allocated to Afghanistan War.
+    var startOfAgWar = new Date("Oct 7, 2001");     // start of Afghanistan War.
+    var AgBudgetedThrough = new Date("Sept 30, 2009");  // current budget goes to
+     
+    var totalFM=186000000000;  //budget militaire français 2009 - 2014
+    var startOfFM=new Date("Jan 1, 2009");
+    var FMBudgetedThrough=new Date("Dec 31, 2014");
+
+    var separator = "'";
+   
+    /////////////////End CUSTOMIZATION/////////////////
+     
+    RunWarCost();  ////// Exécute la fonction principale. //
+     
+    function RunWarCost(){
+    if (Gadget_WarCost_WhichWar == "US in Wars since 2001") { //regarde quelles données afficher.
+      calculateAg();
+      calculateIraq();
+      calculateTotal();
+      var OutNumberWarCost=costOfTotal;
+      } 
+    else if (Gadget_WarCost_WhichWar == "US in Iraq since 2003") {
+      calculateIraq();
+      var OutNumberWarCost=costOfIraq;
+      }
+    else if (Gadget_WarCost_WhichWar =="US in Afghanistan since 2001") {
+      calculateAg();
+      var OutNumberWarCost=costOfAg;
+      }
+    else if (Gadget_WarCost_WhichWar =="French military budget since 2009") {
+      calculateFrenchMilitary();
+      WarCostmoney =" euros";
+      var OutNumberWarCost=costOfFrenchMilitary;
+      }
+    else {alert("The value of parameter Gadget_WarCost_WhichWar is wrong.");}
+     
+    if (WarCostmoney=="$") { var OutTextCostOfWar=WarCostmoney+number_str(OutNumberWarCost);}
+    else { var OutTextCostOfWar=number_str(OutNumberWarCost)+WarCostmoney; } //La chaine de caractere du chiffre actuel
+     
+    var compteur = document.getElementById("compteur");
+        compteur.innerHTML= "Votre compteur : " + OutTextCostOfWar + " = " + Gadget_WarCost_WhichWar;   //Affiche la chaine de caractere
+           
+    window.setTimeout(RunWarCost, 100); ////// Réexécute la fonction principale dans 100 millisecondes. //
+    }
+  
+    function calculateFrenchMilitary () {
+     calculateWarCost(startOfFM,FMBudgetedThrough,totalFM);
+     costOfFrenchMilitary=costOfWarAmount;
+    }
+    function calculateIraq () {
+     calculateWarCost(startOfIraqWar,IraqBudgetedThrough,totalIraq);
+     costOfIraq=costOfWarAmount;
+    }
+    function calculateAg () {
+     calculateWarCost(startOfAgWar,AgBudgetedThrough,totalAg);
+     costOfAg=costOfWarAmount;
+    }
+    function calculateTotal () {
+      costOfTotal = costOfAg + costOfIraq;
+    }
+     
+    function calculateWarCost (startOfWar,BudgetedThrough,totalMoney) {
+      var totalMS = BudgetedThrough - startOfWar;   // total MS for dollars allocated
+      var ratePerMS     = totalMoney / totalMS;   // the rate per MS of the war so far
+      var curDate = new Date();       // today's date
+      var diff = curDate - startOfWar;      // MS between today and start of the war
+      costOfWarAmount = diff * ratePerMS;    // cost of war at this time
+    }
+     
+    function number_str(n){
+     var x=n.toString();
+     var dot=x.lastIndexOf('.'); 
+     x=x.substr(0,dot); 
+     var l=x.length; 
+     var res=""; 
+     for(l-=3;l>0;l-=3){res=separator+x.substr(l,3)+res;} 
+     res=x.substr(0,l+3)+res;
+     return res;
+    }
+	</script>
+
+   </body> 
+</html>

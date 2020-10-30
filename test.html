@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="fr">
+   <head>
+	<script type="text/javascript">
+          var texte;
+	  function Prompt_and_run() {
+                   texte = prompt("Bonjour. \nEntrez votre texte :");
+                   return affiche_dans_div();
+          }
+          function affiche_dans_div() {
+		   var wikitext = document.getElementById("wikitext");
+             	   return wikitext.innerHTML= "<h3>" + texte; + "</h3>"
+          }
+	</script>
+
+  <title><div id="wikitext"></div></title>
+   </head>
+ 
+   <body>
+      <a onmouseover="Prompt_and_run();"> <!-- la fonction est exécutée lorsque la souris est sur l'ancre -->
+	Ajouter votre propre groupe.
+      </a>
+
+      <div id="wikitext"></div>
+
+   </body> 
+</html>

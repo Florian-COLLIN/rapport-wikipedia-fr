@@ -1,0 +1,81 @@
+/* Titres de sections */
+h1 {
+	color: red;
+}
+h2,
+h3,
+h4 {
+	text-align: justify;
+	font-variant: small-caps;
+}
+/* Couleur de fond */
+body {
+	background-color: yellow;
+}
+/* Cadres */
+#cadre {
+	width: 800px;
+	margin: 0 auto;
+	background-color: white;
+	text-align: justify;
+	align-content: center;
+	border: 1px solid #66A7CC;
+}
+#article {
+	width: 600px;
+	margin: 0 auto;
+	background-color: green;
+	text-align: justify;
+	align-content: center;
+	border: 1px solid #66A7CC;
+}
+#titre-article p {
+	font-size: 45px;
+	color: blue;
+	text-align: center;
+}
+#contenu-article p {
+	color: black;
+	text-align: justify;
+	font-family: "Times New Roman";
+}
+#bas-article p {
+	font-size: 10px;
+	text-align: right;
+	font-family: "Courier New";
+}
+/* Spécifique à certain texte */
+.pas-encore {
+	color: red;
+	font-size: 50px;
+	font-family: "Courier New";
+	text-align: center;
+}
+div#cadre small.copyrights {
+	font-family: "Times New Roman";
+	font-size: 15px;
+	text-align: right;
+}
+div#cadre small.about {
+	font-family: "Times New Roman";
+	font-size: 20px;
+	text-align: right;
+}
+a#link-haut {
+	color: red;
+	text-align: center;
+}
+/* Personnalisation de l'ensemble des textes */
+p,
+ul,
+li {
+	font-family: "Times New Roman";
+	color: black;
+	text-align: justify;
+}
+/* Personnalisation approfondi */
+a:hover {
+	text-decoration: underline;
+	color: green;
+}
+
